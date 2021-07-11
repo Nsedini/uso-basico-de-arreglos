@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 (function () {
     const PacientesRadiologia = [
@@ -136,5 +136,12 @@
       },
     ];
   
-    document.write(`Primera atencion: ${PacientesRadiologia[0].paciente} - ${PacientesRadiologia[0].prevision}`);
+    document.write(
+        `Primera atencion: 
+            ${PacientesRadiologia[0].paciente} - ${PacientesRadiologia[0].prevision} 
+        |
+         La ultima atecion:
+            ${PacientesRadiologia[PacientesRadiologia.length -1].paciente} - ${PacientesRadiologia[PacientesRadiologia.length -1].prevision}
+    `
+    );
 })();
