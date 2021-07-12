@@ -1,6 +1,54 @@
 "use strict";
 
+function imprimirAtenciones(pacientes) {
+    document.write(
+        `Primera Atencion:
+            ${pacientes[0].paciente} - ${pacientes[0].prevision}
+         |
+         Ultima Atencion:
+            ${pacientes[pacientes.length - 1].paciente} - 
+            ${pacientes[pacientes.length - 1].prevision}
+         `
+    )
+}
+
+function imprimirTablaDePacientes(pacientes) {
+    let Template = `
+      <table>
+        <thead>
+          <tr>
+            <th>Hora</th>
+            <th>Paciente</th>
+            <th>Rut</th>
+            <th>Especialista</th>
+            <th>Previsión</th>
+          <tr>
+        </thead>
+        <tbody>
+    `;
+
+    pacientes.forEach((paciente) => {
+      Template += `
+        <tr>
+          <td>${paciente.hora}</td>
+          <td>${paciente.paciente}</td>
+          <td>${paciente.rut}</td>
+          <td>${paciente.especialista}</td>
+          <td>${paciente.prevision}</td>
+        </tr>
+      `;
+    });
+
+    Template += `
+        </ tbody>
+    </ table>
+    `
+
+    document.write(Template);
+};
+
 (function () {
+
     const PacientesRadiologia = [
       {
         hora: "11:00",
@@ -136,67 +184,21 @@
       },
     ];
   
-    document.write(
-        `Primera atencion: 
-            ${PacientesRadiologia[0].paciente} - ${PacientesRadiologia[0].prevision} 
-        |
-         La ultima atecion:
-            ${PacientesRadiologia[PacientesRadiologia.length -1].paciente} - ${PacientesRadiologia[PacientesRadiologia.length -1].prevision}
-    `
-    );
     
-    document.write("<br />")
-    document.write("<br />")
-    document.write(
-        `Primera atencion: 
-            ${PacientesTraumatologia[0].paciente} - ${PacientesTraumatologia[0].prevision} 
-        |
-         La ultima atecion:
-            ${PacientesTraumatologia[PacientesTraumatologia.length -1].paciente} - ${PacientesTraumatologia[PacientesTraumatologia.length -1].prevision}
-    `
-    );
+    imprimirAtenciones(PacientesRadiologia);
+    document.write("<br />");
+    document.write("<br />");
+    imprimirAtenciones(PacientesTraumatologia);
+    document.write("<br />");
+    document.write("<br />");
+    imprimirAtenciones(PacientesDental);
 
-    document.write("<br />")
-    document.write("<br />")
-    document.write(
-        `Primera atencion: 
-            ${PacientesDental[0].paciente} - ${PacientesDental[0].prevision} 
-        |
-         La ultima atecion:
-            ${PacientesDental[PacientesDental.length -1].paciente} - ${PacientesDental[PacientesDental.length -1].prevision}
-    `
-    );
+    imprimirTablaDePacientes(PacientesRadiologia);
+    imprimirTablaDePacientes(PacientesTraumatologia);
+    imprimirTablaDePacientes(PacientesDental);
 
-    let Template = `
-        <table>
-            <thead>
-                <tr>
-                    <th>Hora</ th>
-                    <th>Paciente</ th>
-                    <th>Rut</ th>
-                    <th>Especialista</ th>
-                    <th>Prevision</ th>
-                </ tr>
-            </ thead>
-            <tbody>
-    `
-    PacientesRadiologia.forEach((paciente) => {
-        Template += `
-        <tr>
-            <td>${paciente.hora}</ td>
-            <td>${paciente.paciente}</ td>
-            <td>${paciente.rut}</ td>
-            <td>${paciente.especialista}</ td>
-            <td>${paciente.prevision}</ td>
-        </ tr>
-        `;
-    });
+  
 
-    Template += `
-        </ tbody>
-    </ table>
-    `
-
-    document.write(Template);
+    
 
 })();
